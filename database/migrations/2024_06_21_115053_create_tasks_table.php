@@ -17,10 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('status_id');
             $table->string('task_name');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->text('description')->nullable();
-            $table->json('members');
+            $table->json('members')->nullable();
+            $table->json('tags')->nullable();
             $table->string('task_priority');
             $table->smallInteger('order')->default(0);
             $table->timestamps();

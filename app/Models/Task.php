@@ -27,10 +27,24 @@ class Task extends Model
         'start_date',
         'end_date',
         'members',
+        'tags',
         'user_id',
         'order',
         'status_id'
     ];
+
+
+    protected $casts = [
+        'members' => 'array',
+        'tags' => 'array',
+
+    ];
+
+    protected $hidden = [
+        'members',
+        'tags',
+    ];
+
 
     public function user()
     {

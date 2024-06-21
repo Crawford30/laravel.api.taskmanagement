@@ -54,18 +54,21 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //======Manage Tags ====
     Route::group(['prefix' => 'tag'], function () {
+        Route::get('/list-all-tags', [TagController::class, 'getAllTags']);
         Route::post('/create-or-update-tag', [TagController::class, 'saveOrUpdateTag']);
         Route::post('/delete-tag', [TagController::class, 'deleteTag']);
     });
 
      //======Manage Projects ====
      Route::group(['prefix' => 'project'], function () {
+        Route::get('/list-all-projects', [ProjectController::class, 'getAllProjects']);
         Route::post('/create-or-update-project', [ProjectController::class, 'saveOrUpdateProject']);
         Route::post('/delete-project', [ProjectController::class, 'deleteProject']);
     });
 
   //======Manage Tasks ====
     Route::group(['prefix' => 'task'], function () {
+        Route::post('/list-all-tasks', [TaskController::class, 'saveOrUpdateTask']);
         Route::post('/create-or-update-task', [TaskController::class, 'saveOrUpdateTask']);
         Route::post('/delete-task', [TaskController::class, 'deleteTask']);
     });

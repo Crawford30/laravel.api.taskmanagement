@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Api\Projects;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest\CreateProjectRequest;
 use App\Http\Requests\ProjectRequest\DeleteProjectRequest;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    //  public function getAllProjects() {
-    //     $allContacts = Contact::with('messages', 'user')->get();
-    //     return apiResponse([$allContacts], 201);
-    // }
+     public function getAllProjects() {
+        $allProjects = Project::all();
+        return apiResponse([$allProjects], 201);
+    }
 
     public function saveOrUpdateProject(CreateProjectRequest $request)
     {
