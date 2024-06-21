@@ -34,20 +34,6 @@ Route::group(['namespace' => 'Api', 'middleware' => 'return-json'], function () 
     });
 
 
-// //OPEN API ENDPOINTS FOR DEVELOPMENT
-
-// //======Get All Messages
-// Route::group(['prefix' => 'message'], function () {
-//     Route::get('/all-messages', [MessageController::class, 'getAllMessages']);
-
-// });
-
-// //======Get All  Contacts ====
-// Route::group(['prefix' => 'contact'], function () {
-//     Route::get('/all-contacts', [ContactController::class, 'getAllContacts']);
-
-// });
-
 
 
 Route::group(['middleware' => 'auth:api'], function () {
