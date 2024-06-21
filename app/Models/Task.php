@@ -20,6 +20,7 @@ class Task extends Model
             // 'status_id'
 
     protected $fillable = [
+        'project_id',
         'task_name',
         'description',
         'task_priority',
@@ -39,5 +40,11 @@ class Task extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, "project_id", "id");
     }
 }

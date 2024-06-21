@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Projects\ProjectController;
+use App\Http\Controllers\Api\Tags\TagController;
+use App\Http\Controllers\Api\Tasks\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,11 +51,27 @@ Route::group(['namespace' => 'Api', 'middleware' => 'return-json'], function () 
 
 
 Route::group(['middleware' => 'auth:api'], function () {
-    // //======Manage Messages ====
-    // Route::group(['prefix' => 'message'], function () {
-    //     Route::post('/send-message', [MessageController::class, 'sendMessage']);
 
-    // });
+    //======Manage Tags ====
+    Route::group(['prefix' => 'tag'], function () {
+        Route::post('/create-or-update-tag', [TagController::class, 'saveOrUpdateTag']);
+        Route::post('/delete-tag', [TagController::class, 'deleteTag']);
+    });
+
+     //======Manage Projects ====
+     Route::group(['prefix' => 'project'], function () {
+        Route::post('/create-or-update-project', [ProjectController::class, 'saveOrUpdateProject']);
+        Route::post('/delete-project', [ProjectController::class, 'deleteProject']);
+    });
+
+  //======Manage Tasks ====
+    Route::group(['prefix' => 'task'], function () {
+        Route::post('/create-or-update-task', [TaskController::class, 'saveOrUpdateTask']);
+        Route::post('/delete-task', [TaskController::class, 'deleteTask']);
+    });
+
+
+
 
     // //======Manage Contacts ====
     // Route::group(['prefix' => 'contact'], function () {

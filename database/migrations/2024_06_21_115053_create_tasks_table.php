@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('status_id');
             $table->string('task_name');
             $table->string('start_date');
@@ -23,7 +24,6 @@ return new class extends Migration
             $table->string('task_priority');
             $table->smallInteger('order')->default(0);
             $table->timestamps();
-
 
             // 'task_name',
             // 'description',
