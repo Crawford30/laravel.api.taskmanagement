@@ -75,13 +75,6 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 
 
-
-    // //======Manage Contacts ====
-    // Route::group(['prefix' => 'contact'], function () {
-    //     Route::post('/save-contact', [ContactController::class, 'saveContactDetails']);
-
-    // });
-
 });
 
 
