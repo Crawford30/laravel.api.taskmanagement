@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-     public function getAllProjects() {
-        $allProjects = Project::all();
-        return apiResponse([$allProjects], 201);
+
+    public function getAllProjects() {
+        $allProjects = Project::orderBy('created_at', 'desc')->get();
+        return apiResponse($allProjects, 201);
     }
+
+    //  public function getAllProjects() {
+    //     // $allProjects = Project::all();
+    //     // return apiResponse([$allProjects], 201);
+    // }
 
     public function saveOrUpdateProject(CreateProjectRequest $request)
     {

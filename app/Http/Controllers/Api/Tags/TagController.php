@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
     public function getAllTags() {
-        $allTags = Tag::all();
-        return apiResponse([$allTags], 201);
+
+        $allTags = Tag::orderBy('created_at', 'desc')->get();
+        return apiResponse($allTags, 201);
     }
 
 
