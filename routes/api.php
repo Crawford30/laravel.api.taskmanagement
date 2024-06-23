@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Members\MemberController;
 use App\Http\Controllers\Api\Projects\ProjectController;
 use App\Http\Controllers\Api\Tags\TagController;
 use App\Http\Controllers\Api\Tasks\TaskController;
@@ -54,10 +55,19 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   //======Manage Tasks ====
     Route::group(['prefix' => 'task'], function () {
-        Route::post('/list-all-tasks', [TaskController::class, 'saveOrUpdateTask']);
+        Route::get('/list-all-tasks', [TaskController::class, 'getAllTasks']);
         Route::post('/create-or-update-task', [TaskController::class, 'saveOrUpdateTask']);
         Route::post('/delete-task', [TaskController::class, 'deleteTask']);
     });
+
+
+     //======Manage Members ====
+     Route::group(['prefix' => 'member'], function () {
+        Route::get('/list-all-members', [MemberController::class, 'getAllMembers']);
+        Route::post('/create-or-update-member', [MemberController::class, 'saveOrUpdateMember']);
+        Route::post('/delete-member', [MemberController::class, 'deleteMember']);
+    });
+
 
 
 
