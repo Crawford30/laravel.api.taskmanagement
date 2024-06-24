@@ -23,6 +23,7 @@ return new class extends Migration
             $table->json('members')->nullable();
             $table->json('tags')->nullable();
             $table->string('task_priority');
+            $table->string('task_color')->nullable();
             $table->smallInteger('order')->default(0);
             $table->timestamps();
 

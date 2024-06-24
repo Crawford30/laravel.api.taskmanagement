@@ -70,6 +70,13 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 
 
+     //======Manage Logged In User Statuss ====
+     Route::group(['prefix' => 'status'], function () {
+        Route::get('/list-current-user-task-status', [AuthController::class, 'getCurrentUserStatus']);
+    });
+
+
+
 
 });
 

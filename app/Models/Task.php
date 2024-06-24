@@ -24,6 +24,7 @@ class Task extends Model
         'task_name',
         'description',
         'task_priority',
+        'task_color',
         'start_date',
         'end_date',
         'members',
@@ -40,10 +41,10 @@ class Task extends Model
 
     ];
 
-    protected $hidden = [
-        'members',
-        'tags',
-    ];
+    // protected $hidden = [
+    //     'members',
+    //     'tags',
+    // ];
 
 
     public function user()
