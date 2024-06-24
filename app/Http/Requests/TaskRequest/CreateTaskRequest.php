@@ -31,7 +31,7 @@ class CreateTaskRequest extends FormRequest
             'project_id' => 'required|exists:projects,id',
             'start_date' => 'required|string',
             'end_date' => 'required|string',
-            'task_priority' => ['required', Rule::in(config('taskpriorities.task_priorities'))],
+            // 'task_priority' => 'required|string', Rule::in(config('taskpriorities.task_priorities')),
             'members' => 'nullable|array',
             'tags' => 'nullable|array',
         ];
@@ -51,8 +51,8 @@ class CreateTaskRequest extends FormRequest
          'end_date' =>  $request->end_date,
          'task_priority' =>  $request->task_priority,
         //  'task_color' =>  $request->task_color ??  randomColor(),
-         'members' => isset($request->members) ? json_encode($request->members, true) : null,
-         'tags' => isset($request->tags) ? json_encode($request->tags, true) : null,
+         'members' => isset($request->members) ? ($request->members) : null,
+         'tags' => isset($request->tags) ? ($request->tags) : null,
         ];
 
          $taskData = Task::updateOrCreate(
