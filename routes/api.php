@@ -28,10 +28,9 @@ Route::group(['namespace' => 'Api', 'middleware' => 'return-json'], function () 
 
     //======Manage Users ====
     Route::group(['prefix' => 'auth'], function () {
-        Route::post('/login', [AuthController::class, 'login']);
-        Route::post('/register', [AuthController::class, 'register']);
-        Route::post('/logout', [AuthController::class, 'logout']);
-
+        Route::post('/v1/login', [AuthController::class, 'login']);
+        Route::post('/v1/register', [AuthController::class, 'register']);
+        Route::post('/v1/logout', [AuthController::class, 'logout']);
     });
 
 
