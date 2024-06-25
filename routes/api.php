@@ -41,38 +41,38 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //======Manage Tags ====
     Route::group(['prefix' => 'tag'], function () {
-        Route::get('/list-all-tags', [TagController::class, 'getAllTags']);
-        Route::post('/create-or-update-tag', [TagController::class, 'saveOrUpdateTag']);
-        Route::post('/delete-tag', [TagController::class, 'deleteTag']);
+        Route::get('/v1/list-all-tags', [TagController::class, 'getAllTags']);
+        Route::post('/v1/create-or-update-tag', [TagController::class, 'saveOrUpdateTag']);
+        Route::post('/v1/delete-tag', [TagController::class, 'deleteTag']);
     });
 
      //======Manage Projects ====
      Route::group(['prefix' => 'project'], function () {
-        Route::get('/list-all-projects', [ProjectController::class, 'getAllProjects']);
-        Route::post('/create-or-update-project', [ProjectController::class, 'saveOrUpdateProject']);
-        Route::post('/delete-project', [ProjectController::class, 'deleteProject']);
+        Route::get('/v1/list-all-projects', [ProjectController::class, 'getAllProjects']);
+        Route::post('/v1/create-or-update-project', [ProjectController::class, 'saveOrUpdateProject']);
+        Route::post('/v1/delete-project', [ProjectController::class, 'deleteProject']);
     });
 
   //======Manage Tasks ====
     Route::group(['prefix' => 'task'], function () {
-        Route::get('/list-all-tasks', [TaskController::class, 'getAllTasks']);
-        Route::post('/create-or-update-task', [TaskController::class, 'saveOrUpdateTask']);
-        Route::post('/delete-task', [TaskController::class, 'deleteTask']);
+        Route::get('/v1/list-all-tasks', [TaskController::class, 'getAllTasks']);
+        Route::post('/v1/create-or-update-task', [TaskController::class, 'saveOrUpdateTask']);
+        Route::post('/v1/delete-task', [TaskController::class, 'deleteTask']);
     });
 
 
      //======Manage Members ====
      Route::group(['prefix' => 'member'], function () {
-        Route::get('/list-all-members', [MemberController::class, 'getAllMembers']);
-        Route::post('/create-or-update-member', [MemberController::class, 'saveOrUpdateMember']);
-        Route::post('/delete-member', [MemberController::class, 'deleteMember']);
+        Route::get('/v1/list-all-members', [MemberController::class, 'getAllMembers']);
+        Route::post('/v1/create-or-update-member', [MemberController::class, 'saveOrUpdateMember']);
+        Route::post('/v1/delete-member', [MemberController::class, 'deleteMember']);
     });
 
 
 
      //======Manage Logged In User Statuses ====
      Route::group(['prefix' => 'status'], function () {
-        Route::get('/list-current-user-task-status', [AuthController::class, 'getCurrentUserStatus']);
+        Route::get('/v1/list-current-user-task-status', [AuthController::class, 'getCurrentUserStatus']);
     });
 
 
