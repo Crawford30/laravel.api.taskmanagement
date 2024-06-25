@@ -25,7 +25,12 @@ class CreateTaskRequest extends FormRequest
     {
 
         return [
-            'task_name' => 'required|string|unique:tasks,task_name|max:56',
+            'task_name' => [
+                'required',
+                'string',
+                'max:56',
+                Rule::unique('tasks')->ignore($this->id),
+            ],
             'description' => 'nullable|string',
             'status_id' => 'required|exists:statuses,id',
             'project_id' => 'required|exists:projects,id',
