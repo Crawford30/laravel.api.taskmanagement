@@ -25,13 +25,9 @@ class DeleteProjectRequest extends FormRequest
 
     public function deleteProject()
     {
-
         $project = Project::findOrFail($this->project_id);
-
-        // Delete tasks associated with the project
         Task::where("project_id", $project->id)->delete();
-        // Delete the project itself
         $project->delete();
-        return response()->json("DELETED", 200);
+        return apiResponse("DELETED", 200);
     }
 }

@@ -31,6 +31,6 @@ class DeleteTaskRequest extends FormRequest
     {
         $task = Task::findOrFail($this->task_id);
         $task->delete();
-        return response()->json("DELETED", 200);
+        return apiResponse("DELETED", 200);
     }
 }

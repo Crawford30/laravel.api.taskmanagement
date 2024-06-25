@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Members;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteMemberRequest extends FormRequest
@@ -11,7 +12,7 @@ class DeleteMemberRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,14 @@ class DeleteMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "member_id" => "required"
         ];
+    }
+
+    public function deleteMember()
+    {
+        $member = User::findOrFail($this->member_id);
+        $member->delete();
+        return apiResponse("DELETED", 200);
     }
 }

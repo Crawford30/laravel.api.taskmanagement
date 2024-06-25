@@ -31,6 +31,7 @@ class DeleteTagRequest extends FormRequest
     {
         $tag = Tag::findOrFail($this->tag_id);
         $tag->delete();
-        return response()->json("DELETED", 200);
+        return apiResponse("DELETED", 200);
     }
 }
+

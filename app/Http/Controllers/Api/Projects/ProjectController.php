@@ -16,11 +16,6 @@ class ProjectController extends Controller
         return apiResponse($allProjects, 201);
     }
 
-    //  public function getAllProjects() {
-    //     // $allProjects = Project::all();
-    //     // return apiResponse([$allProjects], 201);
-    // }
-
     public function saveOrUpdateProject(CreateProjectRequest $request)
     {
          return $request->saveOrUpdateProject($request);
