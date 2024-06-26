@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\CategoriesTableSeeder;
+use Database\Seeders\ProjectsTableSeeder;
+use Database\Seeders\TagsTableSeeder;
+use Database\Seeders\TasksTableSeeder;
+use Database\Seeders\UsersTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        $this->call([
+            UsersTableSeeder::class,
+            StatusesTableSeeder::class,
+            ProjectsTableSeeder::class,
+            TagsTableSeeder::class,
+            CategoriesTableSeeder::class,
+            TasksTableSeeder::class,
+        ]);
+
     }
 }
