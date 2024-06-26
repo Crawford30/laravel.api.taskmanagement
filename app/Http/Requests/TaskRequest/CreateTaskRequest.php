@@ -25,11 +25,12 @@ class CreateTaskRequest extends FormRequest
     {
 
         return [
-            'task_name' => [
-                'required',
-                'string',
-                Rule::unique('tasks')->ignore($this->id),
-            ],
+            'task_name' => 'required|string',
+            // 'task_name' => [
+            //     'required',
+            //     'string',
+            //     Rule::unique('tasks')->ignore($this->id),
+            // ],
             'description' => 'nullable|string',
             'status_id' => 'required|exists:statuses,id',
             'project_id' => 'required|exists:projects,id',
