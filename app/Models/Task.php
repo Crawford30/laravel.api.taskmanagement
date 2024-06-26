@@ -4,20 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-  // 'task_name',
-            // 'description',
-            // 'task_priority',
-            // 'start_date',
-            // 'end_date',
-            // 'order',
-            // 'members',
-            // 'user_id',
-            // 'status_id'
 
     protected $fillable = [
         'project_id',
@@ -42,11 +34,7 @@ class Task extends Model
 
     ];
 
-    // protected $hidden = [
-    //     'members',
-    //     'tags',
-    // ];
-
+    protected $dates = ['deleted_at'];
 
     public function user()
     {

@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest\CreateTaskRequest;
 use App\Http\Requests\TaskRequest\DeleteTaskRequest;
+use App\Http\Requests\TaskRequest\RestoreDeletedTaskRequest;
 
 class TaskController extends Controller
 {
+
     public function getAllTasks() {
-        $tasks = Task::with('status', 'user')->get();
-        return apiResponse($tasks, 201);
+        $tasks = Task::whereNull('deleted_at')->with('status', 'user')->get();
+        return apiResponse($tasks, 200);
+
     }
+
+
+public function getDeletedTasks()
+{
+    $deletedTasks = Task::onlyTrashed()->with('status', 'user')->get();
+    return apiResponse($deletedTasks, 200);
+}
 
     public function saveOrUpdateTask(CreateTaskRequest $request)
     {
@@ -24,5 +34,10 @@ class TaskController extends Controller
     public function deleteTask(DeleteTaskRequest $request)
     {
          return $request->deleteTask($request);
+    }
+
+    public function restoreDeletedTask(RestoreDeletedTaskRequest $request)
+    {
+         return $request->restoreDeletedTask($request);
     }
 }

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('task_color')->nullable();
             $table->smallInteger('order')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
