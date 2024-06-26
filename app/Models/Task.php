@@ -21,6 +21,7 @@ class Task extends Model
 
     protected $fillable = [
         'project_id',
+        'category_id',
         'task_name',
         'description',
         'task_priority',
@@ -55,6 +56,11 @@ class Task extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, "category_id", "id");
     }
 
 

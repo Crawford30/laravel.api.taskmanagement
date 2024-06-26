@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\ProjectRequest;
+namespace App\Http\Requests\CategoryReqeuest;
 
-use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateProjectRequest extends FormRequest
+class CreateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,31 +23,32 @@ class CreateProjectRequest extends FormRequest
      */
     public function rules(): array
     {
-
         return [
-            'project_name' => [
+
+            'category_name' => [
                 'required',
                 'string',
-                Rule::unique('projects')->ignore($this->id),
+                'max:56',
+                Rule::unique('categories')->ignore($this->id),
             ],
-            'project_color' => 'nullable|string',
+            'category_color' => 'nullable|string',
         ];
 
     }
 
-    public function saveOrUpdateProject($request){
+    public function saveOrUpdateCategory($request){
 
         $data = [
          'user_id' => auth()->user()->id,
-         'project_name' =>  $request->project_name,
-         'project_color' =>  $request->project_color ??  randomColor(),
+         'category_name' =>  $request->category_name,
+         'category_color' =>  $request->category_color ??  randomColor(),
         ];
 
-         $tagData = Project::updateOrCreate(
+         $categoryData = Category::updateOrCreate(
             ['id' => $this->id],
              $data
         );
-        return apiResponse($tagData, 201);
+        return apiResponse($categoryData, 201);
  }
 
 }

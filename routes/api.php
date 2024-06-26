@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Categories\CategoryController;
 use App\Http\Controllers\Api\Members\MemberController;
 use App\Http\Controllers\Api\Projects\ProjectController;
 use App\Http\Controllers\Api\Tags\TagController;
@@ -66,6 +67,15 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::post('/v1/create-or-update-member', [MemberController::class, 'saveOrUpdateMember']);
         Route::post('/v1/delete-member', [MemberController::class, 'deleteMember']);
     });
+
+
+     //======Manage Categories ====
+     Route::group(['prefix' => 'category'], function () {
+        Route::get('/v1/list-all-categories', [CategoryController::class, 'getAllCategories']);
+        Route::post('/v1/create-or-update-category', [CategoryController::class, 'saveOrUpdateCategory']);
+        Route::post('/v1/delete-category', [CategoryController::class, 'deleteCategory']);
+    });
+
 
 
 

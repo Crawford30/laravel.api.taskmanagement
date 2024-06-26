@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\Members;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Members\CreateMemberRequest;
-use App\Http\Requests\Members\DeleteMemberRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\MemberRequest\CreateMemberRequest;
+use App\Http\Requests\MemberRequest\DeleteMemberRequest;
 
 class MemberController extends Controller
 {

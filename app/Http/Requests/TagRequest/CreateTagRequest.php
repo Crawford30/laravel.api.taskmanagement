@@ -3,6 +3,7 @@
 namespace App\Http\Requests\TagRequest;
 
 use App\Models\Tag;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateTagRequest extends FormRequest
@@ -23,7 +24,14 @@ class CreateTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tag_name' => 'required|string|unique:tags,tag_name',
+
+            'tag_name' => [
+                'required',
+                'string',
+                'max:56',
+                Rule::unique('tags')->ignore($this->id),
+            ],
+            // 'tag_name' => 'required|string|unique:tags,tag_name',
             'tag_color' => 'nullable|string',
         ];
 

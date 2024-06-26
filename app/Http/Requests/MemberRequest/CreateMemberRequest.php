@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Requests\Members;
+namespace App\Http\Requests\MemberRequest;
+
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateMemberRequest extends FormRequest
 {
-    /**
+     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
@@ -28,6 +29,7 @@ class CreateMemberRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|string|email',
+            'color' => 'nullable|string',
         ];
     }
 
@@ -43,6 +45,7 @@ class CreateMemberRequest extends FormRequest
               'email' => $request->email,
               'name' => $request->name,
               'password' => bcrypt($password),
+              'color' =>  $request->color ??  randomColor(),
           ]);
 
           $token = $user->createToken('API Token')->accessToken;
@@ -53,5 +56,4 @@ class CreateMemberRequest extends FormRequest
 
           return apiResponse(['user' => $user, 'token' => $token], 201);
       }
-
 }

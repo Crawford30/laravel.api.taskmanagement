@@ -19,6 +19,7 @@ class AuthController extends Controller
          $request->validate([
              'email' => 'required|string|email',
              'password' => 'required|string',
+             'color' => 'nullable|string',
          ]);
 
          $user = User::where('email', $request->email)->first();
@@ -70,6 +71,7 @@ class AuthController extends Controller
          $user =   User::create([
              'email' => $request->email,
              'name' => $request->name,
+             'color' =>  $request->color ??  randomColor(),
              'password' => Hash::make( $request->password),
          ]);
 

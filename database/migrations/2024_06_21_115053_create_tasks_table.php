@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('task_name');
             $table->date('start_date');
             $table->date('end_date');
@@ -26,19 +27,6 @@ return new class extends Migration
             $table->string('task_color')->nullable();
             $table->smallInteger('order')->default(0);
             $table->timestamps();
-
-            // 'task_name',
-            // 'description',
-            // 'task_priority',
-            // 'start_date',
-            // 'end_date',
-            // 'order',
-            // 'members',
-            // 'user_id',
-            // 'status_id'
-
-
-
         });
     }
 

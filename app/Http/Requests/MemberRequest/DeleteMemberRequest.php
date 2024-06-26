@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Members;
+namespace App\Http\Requests\MemberRequest;
+
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteMemberRequest extends FormRequest
 {
-    /**
+     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
