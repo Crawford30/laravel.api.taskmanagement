@@ -53,7 +53,7 @@
 ### 16. User Account
 
 -> I created a seeded account with these login credentials;
-**Email** : projectcode@gmail.com 
+**Email** : projectcode@gmail.com  and <br>
 **Password** : projectcode
 
 
