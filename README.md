@@ -44,13 +44,18 @@
 -> _php artisan config:clear_ <br>
 -> _php artisan config:cache_
 
-### 14. Start Development Server
+
+### 13. Install Passport
+-> _php artisan passport:install_ <br>
+
+
+### 15. Start Development Server
 -> Run _php artisan serve_ to start the development server.
 
-### 15. Copy Base URL
+### 16. Copy Base URL
 -> Copy the URL provided by the development server and use it as the base URL in the .env (afte copying .env.example from the front app) located in **Project Root Folder**). For my case it was VITE_API_URL=http://127.0.0.1:8000
 
-### 16. User Account
+### 17. User Account
 
 -> I created a seeded account with these login credentials;<br>
 **Email** : projectcode@gmail.com <br>
