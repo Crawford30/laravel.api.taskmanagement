@@ -45,7 +45,7 @@
 -> _php artisan config:cache_
 
 
-### 13. Install Passport
+### 14. Install Passport
 -> _php artisan passport:install_ <br>
 
 
