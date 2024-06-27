@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest\CreateTaskRequest;
 use App\Http\Requests\TaskRequest\DeleteTaskRequest;
 use App\Http\Requests\TaskRequest\RestoreDeletedTaskRequest;
+use App\Http\Requests\TaskRequest\UpdateTaskStatusRequest;
 
 class TaskController extends Controller
 {
@@ -40,4 +41,14 @@ public function getDeletedTasks()
     {
          return $request->restoreDeletedTask($request);
     }
+
+
+    public function updateTaskStatus(UpdateTaskStatusRequest $request)
+    {
+         return $request->updateTaskStatus($request);
+    }
+
+
+
+
 }

@@ -55,11 +55,14 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   //======Manage Tasks ====
     Route::group(['prefix' => 'task'], function () {
+
+
         Route::get('/v1/list-all-tasks', [TaskController::class, 'getAllTasks']);
         Route::get('/v1/list-all-deleted-tasks', [TaskController::class, 'getDeletedTasks']);
         Route::post('/v1/create-or-update-task', [TaskController::class, 'saveOrUpdateTask']);
         Route::post('/v1/restore-deleted-task', [TaskController::class, 'restoreDeletedTask']);
         Route::post('/v1/delete-task', [TaskController::class, 'deleteTask']);
+        Route::post('/v1/update-task-status', [TaskController::class, 'updateTaskStatus']);
     });
 
 
