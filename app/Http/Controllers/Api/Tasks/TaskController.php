@@ -14,17 +14,23 @@ class TaskController extends Controller
 {
 
     public function getAllTasks() {
-        $tasks = Task::whereNull('deleted_at')->with('status', 'user')->get();
+        $tasks = Task::whereNull('deleted_at')
+        ->with('status', 'user')
+        ->orderBy('created_at', 'desc')
+        ->get();
         return apiResponse($tasks, 200);
 
     }
 
 
-public function getDeletedTasks()
-{
-    $deletedTasks = Task::onlyTrashed()->with('status', 'user')->get();
-    return apiResponse($deletedTasks, 200);
-}
+    public function getDeletedTasks()
+    {
+        $deletedTasks = Task::onlyTrashed()
+        ->with('status', 'user')
+        ->orderBy('created_at', 'desc')
+        ->get();
+        return apiResponse($deletedTasks, 200);
+    }
 
     public function saveOrUpdateTask(CreateTaskRequest $request)
     {
