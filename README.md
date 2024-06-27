@@ -41,7 +41,7 @@
 -> Run _php artisan db:seed_ to seed the databases.
 
 ### 13. Clear Configuration (if necessary)
--> _php artisan config:clear_
+-> _php artisan config:clear_ <br>
 -> _php artisan config:cache_
 
 ### 14. Start Development Server
