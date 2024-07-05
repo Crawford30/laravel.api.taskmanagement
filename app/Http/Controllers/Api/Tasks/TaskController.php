@@ -14,18 +14,33 @@ class TaskController extends Controller
 {
 
     public function getAllTasks() {
-        $tasks = Task::whereNull('deleted_at')
-        ->with('status', 'user')
-        ->orderBy('created_at', 'desc')
-        ->get();
+
+        //====Get Logged User Task or Task Assigned to login user====
+        $userID = auth()->id();
+        $tasks = Task::where(function($query) use ($userID) {
+                $query->where('user_id', $userID)
+                      ->orWhereJsonContains('members', ['id' => $userID]);
+            })
+            ->with('status', 'user')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return apiResponse($tasks, 200);
 
+        // $tasks = Task::where('user_id', auth()->user()->id)
+        // ->whereNull('deleted_at')
+        // ->with('status', 'user')
+        // ->orderBy('created_at', 'desc')
+        // ->get();
+        // return apiResponse($tasks, 200);
     }
 
 
     public function getDeletedTasks()
     {
+        //====Only Show the tasks to the user who deleted it==
         $deletedTasks = Task::onlyTrashed()
+        ->where('user_id', auth()->user()->id)
         ->with('status', 'user')
         ->orderBy('created_at', 'desc')
         ->get();
@@ -53,8 +68,6 @@ class TaskController extends Controller
     {
          return $request->updateTaskStatus($request);
     }
-
-
 
 
 }
