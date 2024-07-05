@@ -39,21 +39,28 @@ class CreateMemberRequest extends FormRequest
       public function registerMember($request)
       {
 
-        $password = "taskManage#" . mt_rand(1000, 9999);
+        $userInDB = User::where('email', $request->email)->first();
+        if($userInDB){
+            return apiResponse(['message' => 'A user with the email ' . $request->email . ' already exists in the system.'], 401);
+        }else {
+            $password = "taskManage#" . mt_rand(1000, 9999);
 
-          $user =   User::create([
-              'email' => $request->email,
-              'name' => $request->name,
-              'password' => bcrypt($password),
-              'color' =>  $request->color ??  randomColor(),
-          ]);
+            $user =   User::create([
+                'email' => $request->email,
+                'name' => $request->name,
+                'password' => bcrypt($password),
+                'color' =>  $request->color ??  randomColor(),
+            ]);
 
-          $token = $user->createToken('API Token')->accessToken;
+            $token = $user->createToken('API Token')->accessToken;
+
+            //Send Email To The User With Generated PAssword
+            Mail::to($user->email)->send(new AccountCreatedEmail($user->name, $user->email, $password));
+
+            return apiResponse(['user' => $user, 'token' => $token], 201);
+
+        }
 
 
-          //Send Email To The User With Generated PAssword
-          Mail::to($user->email)->send(new AccountCreatedEmail($user->name, $user->email, $password));
-
-          return apiResponse(['user' => $user, 'token' => $token], 201);
       }
 }

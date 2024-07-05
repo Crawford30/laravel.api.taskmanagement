@@ -32,7 +32,7 @@ class ProjectsTableSeeder extends Seeder
 
             [
                 'user_id' => 1,
-                'project_name' => 'Project Beta',
+                'project_name' => 'Project Gamma',
                 'project_color' => '#FF9622',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
