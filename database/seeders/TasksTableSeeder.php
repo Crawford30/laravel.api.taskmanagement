@@ -21,8 +21,8 @@ class TasksTableSeeder extends Seeder
                 'status_id' => 1,
                 'category_id' => 2,
                 'task_name' => 'Task name 1',
-                'start_date' => '2024-06-28',
-                'end_date' => '2024-06-27',
+                'start_date' => '2024-06-23',
+                'end_date' => '2024-07-27',
                 'description' => 'Description 1',
                 'members' => json_encode([
                     [
@@ -58,7 +58,7 @@ class TasksTableSeeder extends Seeder
                 'status_id' => 1,
                 'category_id' => 2,
                 'task_name' => 'Task name 2',
-                'start_date' => '2024-06-28',
+                'start_date' => '2024-03-24',
                 'end_date' => '2024-06-27',
                 'description' => 'Description 2',
                 'members' => json_encode([
@@ -95,8 +95,8 @@ class TasksTableSeeder extends Seeder
                 'status_id' => 1,
                 'category_id' => 2,
                 'task_name' => 'task name 3',
-                'start_date' => '2024-06-28',
-                'end_date' => '2024-06-27',
+                'start_date' => '2024-01-28',
+                'end_date' => '2024-08-27',
                 'description' => 'Description 3',
                 'members' => json_encode([
                     [
@@ -132,8 +132,8 @@ class TasksTableSeeder extends Seeder
                 'status_id' => 1,
                 'category_id' => 2,
                 'task_name' => 'Task name 4',
-                'start_date' => '2024-06-28',
-                'end_date' => '2024-06-27',
+                'start_date' => '2023-11-28',
+                'end_date' => '2024-03-27',
                 'description' => 'Description 4',
                 'members' => json_encode([
                     [
@@ -166,8 +166,8 @@ class TasksTableSeeder extends Seeder
                 'status_id' => 1,
                 'category_id' => 2,
                 'task_name' => 'Task name 5',
-                'start_date' => '2024-06-28',
-                'end_date' => '2024-06-27',
+                'start_date' => '2024-07-04',
+                'end_date' => '2024-09-28',
                 'description' => 'Description 5',
                 'members' => json_encode([
                     [
