@@ -67,7 +67,11 @@ class AuthController extends Controller
        //=====User Registration =====
      public function register(Request $request)
      {
+        $userInDB = User::where('email', $request->email)->first();
 
+        if($userInDB){
+            return apiResponse([ 'message' => 'A user with the email ' . $request->email . ' already exists in the system.'], 401);
+        }else {
          $user =   User::create([
              'email' => $request->email,
              'name' => $request->name,
@@ -76,8 +80,10 @@ class AuthController extends Controller
          ]);
 
          $token = $user->createToken('API Token')->accessToken;
+
          return apiResponse(['user' => $user, 'token' => $token], 201);
      }
+    }
 
 
        //=====User Logout =====
